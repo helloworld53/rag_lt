@@ -16,7 +16,7 @@ def load_model():
     model_path = hf_hub_download(
     repo_id=model_name_or_path,
     filename=model_basename,
-    cache_dir= '/content/models' # Directory for the model
+    #cache_dir= '/content/models' # Directory for the model
 )
     model = Llama(model_path, embedding=True)
 
@@ -30,7 +30,7 @@ def load_model():
     model_path_model = hf_hub_download(
     repo_id=model_2_name,
     filename=model_2base_name,
-    cache_dir= '/content/models' # Directory for the model
+    #cache_dir= '/content/models' # Directory for the model
 )   
     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
     llm = LlamaCpp(
