@@ -45,25 +45,7 @@ def load_model():
 )
     st.success("loaded the second NLP model from Hugging Face!") 
 
-    model_2_name = "TheBloke/zephyr-7B-beta-GGUF"
-    model_2base_name = "zephyr-7b-beta.Q4_K_M.gguf"
-    model_path_model = hf_hub_download(
-    repo_id=model_2_name,
-    filename=model_2base_name,
-    cache_dir= '/content/models' # Directory for the model
-)   
-    callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-    llm = LlamaCpp(
-    model_path=model_path_model,
-    temperature=0.75,
-    max_tokens=2500,
-    top_p=1,
-    callback_manager=callback_manager,
-    verbose=True, 
-    n_ctx=2048,
-    n_threads = 2# Verbose is required to pass to the callback manager
-)
-    st.success("loaded the second NLP model from Hugging Face!") 
+ 
 #     prompt_template = "<|system|>\
 # </s>\
 # <|user|>\
@@ -73,18 +55,7 @@ def load_model():
 #     prompt = PromptTemplate.from_template(template)
 
     return model, llm
-#     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-#     llm = LlamaCpp(
-#     model_path=model_path_model,
-#     temperature=0.75,
-#     max_tokens=2500,
-#     top_p=1,
-#     callback_manager=callback_manager,
-#     verbose=True, 
-#     n_ctx=2048,
-#     n_threads = 2# Verbose is required to pass to the callback manager
-# )
-    return model, llm
+
     
 st.title("Please ask your question on Lithuanian rules for foreigners.")
 model,llm  = load_model()
