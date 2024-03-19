@@ -59,23 +59,8 @@ def load_model():
     
 st.title("Please ask your question on Lithuanian rules for foreigners.")
 model,llm  = load_model()
-pc = Pinecone(api_key=apikeys)
+pc = Pinecone(api_key=apikey)
 index = pc.Index("law")
-model,llm  = load_model()
-pc = Pinecone(api_key="003117b0-6caf-4de4-adf9-cc49da6587e6")
-index = pc.Index("law")
-question = st.text_input("Enter your question:")
-query = model.create_embedding(question)
-q = query['data'][0]['embedding']
-response = index.query(
-  vector=q,
-  top_k=1,
-  include_metadata = True,
-  namespace = "ns1"
-)
-response_t = response['matches'][0]['metadata']['text']
-st.header("Answer:")
-st.write(response_t)
 
 query = model.create_embedding(question)
 q = query['data'][0]['embedding']
