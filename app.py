@@ -62,7 +62,7 @@ model,llm  = load_model()
 apikey = st.secrets["apikey"] 
 pc = Pinecone(api_key=apikey)
 index = pc.Index("law")
-
+question = st.text_input("Enter your question:")
 query = model.create_embedding(question)
 q = query['data'][0]['embedding']
 response = index.query(
