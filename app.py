@@ -59,6 +59,7 @@ def load_model():
     
 st.title("Please ask your question on Lithuanian rules for foreigners.")
 model,llm  = load_model()
+apikey = st.secrets["apikey"] 
 pc = Pinecone(api_key=apikey)
 index = pc.Index("law")
 
