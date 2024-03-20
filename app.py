@@ -66,7 +66,9 @@ question = st.text_input("Enter your question:")
 
 if question != "":
     query = model.create_embedding(question)
+    st.write(query)
     q = query['data'][0]['embedding']
+    
     response = index.query(
     vector=q,
     top_k=1,
