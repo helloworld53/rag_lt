@@ -63,14 +63,17 @@ apikey = st.secrets["apikey"]
 pc = Pinecone(api_key=apikey)
 index = pc.Index("law")
 question = st.text_input("Enter your question:")
-query = model.create_embedding(question)
-q = query['data'][0]['embedding']
-response = index.query(
-  vector=q,
-  top_k=1,
-  include_metadata = True,
-  namespace = "ns1"
-)
-response_t = response['matches'][0]['metadata']['text']
+
+if question != None:
+    query = model.create_embedding(question)
+    q = query['data'][0]['embedding']
+    response = index.query(
+    vector=q,
+    top_k=1,
+    include_metadata = True,
+    namespace = "ns1"
+    )
+    response_t = response['matches'][0]['metadata']['text']
 st.header("Answer:")
-st.write(response_t)
+if response_t:
+    st.write(response_t)
