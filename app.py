@@ -76,6 +76,5 @@ if question != "":
     namespace = "ns1"
     )
     response_t = response['matches'][0]['metadata']['text']
-st.header("Answer:")
-if response_t:
     st.write(response_t)
+st.header("Answer:")
