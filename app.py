@@ -64,7 +64,7 @@ pc = Pinecone(api_key=apikey)
 index = pc.Index("law")
 question = st.text_input("Enter your question:")
 
-if question != None:
+if question != "":
     query = model.create_embedding(question)
     q = query['data'][0]['embedding']
     response = index.query(
