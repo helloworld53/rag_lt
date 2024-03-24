@@ -75,3 +75,4 @@ if question != "":
     # st.write(response_t)
     response = prompt.format(prompt =f"Based on this {response_t} , answer this {question}.")
     st.write_stream(llm.stream(response))
+    st.write(response_t)
